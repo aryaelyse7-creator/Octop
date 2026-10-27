@@ -18,6 +18,16 @@ echo "[octop] Installing agent toolkits (browser-driver, github-scout)..."
 uv run octop plugin install ./plugins/browser-driver --force
 uv run octop plugin install ./plugins/github-scout --force
 
+echo "[octop] Ensuring Ollama + Dolphin 3.0 are running (local uncensored model)..."
+if ! pgrep -x ollama >/dev/null; then
+  if ! command -v ollama >/dev/null; then
+    curl -fsSL https://ollama.com/install.sh | sh
+  fi
+  nohup ollama serve >/tmp/ollama.log 2>&1 &
+  sleep 2
+fi
+ollama list | grep -q dolphin3 || ollama pull dolphin3
+
 echo "[octop] Codespace ready."
 echo "  Start the server:   uv run octop run"
 echo "  Headed browser UI:  xvfb-run -a uv run octop run"
