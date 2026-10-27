@@ -1,0 +1,8 @@
+id: github-scout
+version: 0.1.0
+name: GitHub Scout
+description: Search GitHub to shortlist repos and code the agent needs (gh CLI backed)
+icon: "🔎"
+group: tools
+kind: tool
+entry: main.py

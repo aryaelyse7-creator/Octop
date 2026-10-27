@@ -1,0 +1,10 @@
+id: browser-driver
+version: 0.1.0
+name: Browser Driver
+description: Drive a real Chrome via CDP — navigate, read, click, type, press, copy, paste, screenshot, scroll
+icon: "🖥️"
+group: tools
+kind: tool
+entry: main.py
+requires:
+  - octop-browser>=1.0.0
